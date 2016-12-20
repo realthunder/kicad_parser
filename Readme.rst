@@ -96,7 +96,7 @@ To delete an expression ::
 
 To create expressions, you'll need to import the general S-Expression Parser ::
 
-    from kicad_parser.sexp_parser import *
+    from kicad_parser import *
 
 For multiple expressions with the same key, they will be stored into an object of
 type `sexp_parser.SexpList`, the parser will automatically create this list 
