@@ -5,9 +5,8 @@ Python S-Expression Parser for KiCAD PCB
 Intrudction
 ___________
 
-The parser ``KicadPCB`` are written using a python S-Expression parser, 
-`the sex_parser <sex_parser>`_. To get this submodule, after checkout this
-repository, do ::
+The parser ``KicadPCB`` are written using a python S-Expression parser, the
+sexp_parser_. To get this submodule, after checkout this repository, do ::
 
     git submodule init
     git submodule update
@@ -16,7 +15,10 @@ The ``KicadPCB`` parser shall be able to handle both ``kicad_pcb`` and
 ``kicad_mod`` file. The parser does not perform semantic check, though. For
 that you'll need to write a large collection of sub-parsers that handle every
 possible keyword. It'll be very tedious, but still easy with the help of
-``SexpParser``. Check out the sample code `here <sex_parser/test.py>`_
+``SexpParser``. Check out the `sample code here`_.
+
+.. _sexp_parser:  http://github.com/realthunder/sexp_parser
+.. _sample code here: http://github.com/realthunder/sexp_parser/tree/master/test.py
 
 Usage
 _____
@@ -27,6 +29,7 @@ To get the python object model of a ``kicad_pcb`` or ``kicad_mod`` file ::
     pcb = KicadPCB.load(filename)
 
 Check for error ::
+
     for e in pcb.getError():
         print('Error: {}'.format(e))
 
