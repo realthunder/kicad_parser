@@ -41,6 +41,26 @@ class KicadPCB_module(SexpParser):
 
 class KicadPCB(SexpParser):
 
+    # To make sure the following key exists, and is of type SexpList
+    _default_lists = \
+            'net',\
+            ('net_class',
+                'add_net'),\
+            'dimension',\
+            'gr_text',\
+            'gr_line',\
+            'gr_circle',\
+            'gr_arc',\
+            'segment',\
+            'via',\
+            ('module',\
+                'fp_text',\
+                'fp_line',\
+                'fp_circle',\
+                'fp_arc',\
+                'pad',\
+                'model')
+
     _parse_module = KicadPCB_module
     _parse_gr_text = KicadPCB_gr_text
 

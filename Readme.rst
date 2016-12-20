@@ -106,7 +106,7 @@ object to hold the multiple instances. To check if it is a list ::
 
 To add a simple expression ``(0 new.layer signal)``, ::
 
-    pcb.layers['0'] = Sexpression('0',[ 'new.layer', 'signal' ])
+    pcb.layers['0'] = Sexp('0',[ 'new.layer', 'signal' ])
 
 Note that if there is already an expression with the same key, ``=`` will not
 overwrite the existing one. Instead, it will use ``SexpList`` to hold multiple
@@ -122,12 +122,34 @@ To add a composit expression ::
         """)
 
 If you are not sure whether a key in the object model holds a single expression
-or multiple instances, you can use ``SexpList`` to make sure its a list ::
+or multiple instances, you can use ``SexpList`` to make sure it is a list ::
 
     if 'module' in pcb:
         for m in SexpList(pcb.module):
             print(m)
 
+``KicadPCB`` will ensure several common keys to be presented even if there is
+none, in which case an empty ``SexpList`` will be inserted. And if there is
+only one instance, it will still be inside a ``SexpList``.  This is to spare
+the pain of the boilerplate code above. The default keys are ::
+
+    net
+    net_class
+        add_net
+    dimension
+    gr_text
+    gr_line
+    gr_circle
+    gr_arc
+    segment
+    via
+    module
+        fp_text
+        fp_line
+        fp_circle
+        fp_arc
+        pad
+        model
 
 To export the modified object model back to kicad_pcb file ::
 
@@ -137,7 +159,7 @@ Or to output stream ::
 
     pcb.export(sys.stdout)
 
-To export any ``Sexpression`` ::
+To export any ``Sexp`` ::
 
     exportSexp(pcb.general,sys.stdout)
 

@@ -39,8 +39,8 @@ for k in pcb.general.area:
 print('\nlayer[0].name: {}'.format(pcb.layers['0'][0]))
 
 # Add a new layer
-# For simple S-Expression without sub S-Epressions, simply use Sexpression(<key>,[<value>...])
-pcb.layers['100'] = Sexpression('100',['new.layer','test'])
+# For simple S-Expression without sub S-Epressions, simply use Sexp(<key>,[<value>...])
+pcb.layers['100'] = Sexp('100',['new.layer','test'])
 print('\nlayers:'.format(pcb.general.area))
 for k in pcb.layers:
     print('\t{}: {}'.format(k,pcb.layers[k]))
@@ -51,6 +51,9 @@ del pcb.layers['100']
 print('\nafter delete :')
 for k in pcb.layers:
     print('\t{}: {}'.format(k,pcb.layers[k]))
+
+
+print('\nmodule[0] keys: {}'.format(pcb.module[0]))
 
 # For composite S-Expressions, use SexpParser which accepts list-based
 # representation of the S-Expression.  Note that SexpParser expects the
@@ -76,11 +79,28 @@ print('\nmodule[0].models :')
 exportSexp(pcb.module[0].model,sys.stdout)
 print('\n')
 
-# If you are not sure whether a key in the object model holds a single expression
-# or multiple instances, you can use ``SexpList`` to make sure its a list.
+# Getting data the way you like it, e.g. the pyhonic way
+if len(pcb.module[0].at)==2:
+    [x,y] = pcb.module[0].at
+    print('\nmodule[0] at: {}'.format([x,y]))
+else:
+    [x,y,angle] = pcb.module[0].at
+    print('\nmodule[0] at: {}'.format([x,y,angle]))
+
+# List concatenation
+print('\nlist concatenation: {}'.format(pcb.gr_line[0].start+pcb.gr_line[0].end))
+
+# KicadPCB will ensure several common keys to be presented even if there is none,
+# in which case an empty SexpList will be inserted. And if there is only one instance,
+# it will be converted to SexpList with one instance two. This is to spare the pain to
+# always check key presence and to check whether it is a list
+#
+# However, KicadPCB does not exhaust all the possibilities, you insert your own keys into
+# kicad_pcb.py. Or, do as follow
 print('\naccess using SexpList')
-for k in SexpList(pcb.general):
-    print(k)
+if 'general' in pcb:
+    for k in SexpList(pcb.general):
+        print(k)
 
 if args.output:
     pcb.export(sys.stdout if args.output=='-' else args.output)
