@@ -38,7 +38,7 @@ access any non numerical keys such as ::
 
     pcb.general.zone
 
-For numeralical keys, and in fact, all type of keys, you can use [] ::
+For numeralical keys, and in fact, all type of keys, you can use ``[]`` ::
 
     pcb['layers']['0']
 
@@ -50,7 +50,7 @@ But not ::
 
     pcb.layers[0]
 
-Because for ``(layers ( 0 F.cu single) ...)`` expression here, the '0' is
+Because for ``(layers ( 0 F.cu single) ...)`` expression here, the ``0`` is
 treated as a string key instead of an integer index. 
 
 For multiple instances with the same key at the same level, you should access
@@ -98,8 +98,8 @@ To create expressions, you'll need to import the general S-Expression Parser ::
 
     from kicad_parser import *
 
-For multiple expressions with the same key, they will be stored into an object of
-type `sexp_parser.SexpList`, the parser will automatically create this list 
+For multiple expressions with the same key, they will be stored into an object
+of type ``sexp_parser.SexpList`` the parser will automatically create this list
 object to hold the multiple instances. To check if it is a list ::
 
         isinstance(pcb.modules,SexpList)
@@ -108,24 +108,24 @@ To add a simple expression ``(0 new.layer signal)``, ::
 
     pcb.layers['0'] = Sexpression('0',[ 'new.layer', 'signal' ])
 
-Note that if there is already an expression with the same key, '=' will not
-overwrite the existing one. Instead, it will use `sexp_parser.SexpList` to hold
-multiple instances
+Note that if there is already an expression with the same key, ``=`` will not
+overwrite the existing one. Instead, it will use ``SexpList`` to hold multiple
+instances
 
 To add a composit expression ::
 
-    pcb.module[0]['model'] = SexpParser(parseSexp(
+    pcb.module[0].model = SexpParser(parseSexp(
         """(model new/model3 
             (at (xyz 1 2 3)) 
             (scale (xyz 3 5 6)) 
             (rotate (xyz 7.0 8.0 9.0)))
         """)
 
-To export the model to kicad_pcb file ::
+To export the modified object model back to kicad_pcb file ::
 
     pcb.export(filename)
 
-Or to an output stream ::
+Or to output stream ::
 
     pcb.export(sys.stdout)
 
