@@ -121,6 +121,14 @@ To add a composit expression ::
             (rotate (xyz 7.0 8.0 9.0)))
         """)
 
+If you are not sure whether a key in the object model holds a single expression
+or multiple instances, you can use ``SexpList`` to make sure its a list ::
+
+    if 'module' in pcb:
+        for m in SexpList(pcb.module):
+            print(m)
+
+
 To export the modified object model back to kicad_pcb file ::
 
     pcb.export(filename)

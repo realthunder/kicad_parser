@@ -74,6 +74,13 @@ pcb.module[0].model = SexpParser(parseSexp(
 
 print('\nmodule[0].models :')
 exportSexp(pcb.module[0].model,sys.stdout)
+print('\n')
+
+# If you are not sure whether a key in the object model holds a single expression
+# or multiple instances, you can use ``SexpList`` to make sure its a list.
+print('\naccess using SexpList')
+for k in SexpList(pcb.general):
+    print(k)
 
 if args.output:
     pcb.export(sys.stdout if args.output=='-' else args.output)
