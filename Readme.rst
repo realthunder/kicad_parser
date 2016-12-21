@@ -103,7 +103,7 @@ For multiple expressions with the same key, they will be stored into an object
 of type ``sexp_parser.SexpList`` the parser will automatically create this list
 object to hold the multiple instances. To check if it is a list ::
 
-        isinstance(pcb.modules,SexpList)
+        isinstance(pcb.module,SexpList)
 
 To add a simple expression ``(0 new.layer signal)``, ::
 
