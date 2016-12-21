@@ -42,7 +42,7 @@ class KicadPCB_module(SexpParser):
 class KicadPCB(SexpParser):
 
     # To make sure the following key exists, and is of type SexpList
-    _default_lists = \
+    _defaults = \
             'net',\
             ('net_class',
                 'add_net'),\

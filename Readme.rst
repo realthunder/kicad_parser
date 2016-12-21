@@ -77,7 +77,8 @@ those ``False`` values will be ignored. These special values are ::
     pad.drill.oval
     module.locked
 
-It's easy to add your own mappings. Check out the source code `here <kicad_pcb.py>`_
+This list is obviously not complete. But, it's easy to add your own mappings.
+Check out the source code `here <kicad_pcb.py>`_
 
 ``KicadPCB`` also treats specal keyword as un-named boolean type, they are ::
 
