@@ -37,6 +37,7 @@ class KicadPCB_module(SexpParser):
     __slots__ = ()
     _default_bools = 'locked'
     _parse_fp_text = KicadPCB_gr_text
+    _parse_pad = KicadPCB_pad
     
 
 class KicadPCB(SexpParser):
