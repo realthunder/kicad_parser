@@ -38,7 +38,7 @@ access any non numerical keys such as ::
 
     pcb.general.zone
 
-For numeralical keys, and in fact, all type of keys, you can use ``[]`` ::
+For numerical keys, and in fact, all type of keys, you can use ``[]`` ::
 
     pcb['layers']['0']
 
