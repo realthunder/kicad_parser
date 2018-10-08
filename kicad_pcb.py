@@ -8,7 +8,7 @@ it is to implement a parser in an almost declarative way.
 A usage demostration is avaiable in `test.py`
 '''
 
-from sexp_parser import *
+from .sexp_parser import *
 
 __author__ = "Zheng, Lei"
 __copyright__ = "Copyright 2016, Zheng, Lei"

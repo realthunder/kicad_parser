@@ -1,2 +1,2 @@
-from kicad_pcb import *
-from sexp_parser import *
+from .kicad_pcb import *
+from .sexp_parser import *
