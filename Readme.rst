@@ -142,6 +142,7 @@ the pain of the boilerplate code above. The default keys are ::
     gr_line
     gr_circle
     gr_arc
+    gr_curve
     segment
     via
     module
