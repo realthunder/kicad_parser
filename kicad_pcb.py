@@ -58,6 +58,7 @@ class KicadPCB(SexpParser):
                 'gr_arc',
                 'gr_curve',
                 'segment',
+                'arc',
                 'via',
                 ('module',
                     'fp_text',
