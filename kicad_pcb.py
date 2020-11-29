@@ -48,6 +48,11 @@ class KicadPCB_module(SexpParser):
 class KicadPCB(SexpParser):
 
     # To make sure the following key exists, and is of type SexpList
+    _module = ['fp_text',
+               'fp_circle',
+               'pad',
+               'model']
+
     _defaults =('net',
                 ('net_class',
                     'add_net'),
@@ -60,17 +65,14 @@ class KicadPCB(SexpParser):
                 'segment',
                 'arc',
                 'via',
-                ('module',
-                    'fp_text',
-                    'fp_line',
-                    'fp_circle',
-                    'fp_arc',
-                    'pad',
-                    'model'),
+                ['module'] + _module,
+                ['footprint'] + _module,
                 ('zone',
                     'filled_polygon'))
 
+    _alias_keys = {'footprint' : 'module'}
     _parse_module = KicadPCB_module
+    _parse_footprint = KicadPCB_module
     _parse_gr_text = KicadPCB_gr_text
 
     def export(self, out, indent='  '):
