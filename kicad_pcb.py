@@ -50,6 +50,7 @@ class KicadPCB(SexpParser):
     # To make sure the following key exists, and is of type SexpList
     _module = ['fp_text',
                'fp_circle',
+               'fp_arc',
                'pad',
                'model']
 
