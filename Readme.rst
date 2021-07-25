@@ -68,9 +68,9 @@ like ``(drill oval 1.0 2.0)`` ::
 
 The 'oval' above would normally be treated as an un-named value, too. However,
 ``KicadPCB`` treats several special un-named values as named boolean type
-value.  Their apperance in the S-Expression source means ``True``, otherwise
-means ``False``. These expressions are always accesible through the object
-model regardless of their apperance in the source. When doing ``export()``,
+value.  Their appearance in the S-Expression source means ``True``, otherwise
+means ``False``. These expressions are always accessible through the object
+model regardless of their appearance in the source. When doing ``export()``,
 those ``False`` values will be ignored. These special values are ::
 
     gr_text.hide
@@ -113,7 +113,7 @@ Note that if there is already an expression with the same key, ``=`` will not
 overwrite the existing one. Instead, it will use ``SexpList`` to hold multiple
 instances
 
-To add a composit expression ::
+To add a composite expression ::
 
     pcb.module[0].model = SexpParser(parseSexp(
         """(model new/model3 

@@ -33,9 +33,9 @@ for k in pcb.general.area:
     print('\t{}'.format(k))
 
 # The 0 in (layers (0 F.Cu signal)...) is treated as a string key, not integer.
-# Integer index is reserved for accessing unamed values. But, you can write a sub
+# Integer index is reserved for accessing unnamed values. But, you can write a sub
 # parser to change that behavior, i.e. to set a key as integer. You need to make
-# sure that there is no clash of key with unamed values.
+# sure that there is no clash of key with unnamed values.
 print('\nlayer[0].name: {}'.format(pcb.layers['0'][0]))
 
 # Add a new layer
@@ -59,14 +59,14 @@ print('\nmodule[0] keys: {}'.format(pcb.module[0]))
 # representation of the S-Expression.  Note that SexpParser expects the
 # first element of each S-Expression to be the line number
 #
-# The assignemnt '=' here will not overwrite existing models, but will be
+# The assignment '=' here will not overwrite existing models, but will be
 # appended to a SexpList. 
 pcb.module[0].model = SexpParser([0,'model','new/model2',
                             [0, 'at', [0, 'xyz', 0, 1, 2]],
                             [0, 'scale', [0, 'xyz', 0,2,3]],
                             [0, 'rotate', [0, 'xyz', 0,3,4]]])
 
-# Or, use parseSexp() to covert S-Expression in plain text to list-based
+# Or, use parseSexp() to convert S-Expression in plain text to list-based
 # representation
 pcb.module[0].model = SexpParser(parseSexp(
     '''(model new/model3 

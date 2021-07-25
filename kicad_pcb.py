@@ -1,11 +1,11 @@
 '''
 ``kicad_pcb`` parser using `sexp_parser.SexpParser`
 
-The parser `KicadPCB` demostrates the usage of a more gernal S-expression
+The parser `KicadPCB` demonstrates the usage of a more general S-expression
 parser of class `sexp_parser.SexpParser`. Check out the source to see how easy
 it is to implement a parser in an almost declarative way.
 
-A usage demostration is avaiable in `test.py`
+A usage demonstration is available in `test.py`
 '''
 
 from .sexp_parser import *
