@@ -43,7 +43,7 @@ class KicadPCB_module(SexpParser):
     _default_bools = 'locked'
     _parse_fp_text = KicadPCB_gr_text
     _parse_pad = KicadPCB_pad
-    
+
 
 class KicadPCB(SexpParser):
 
@@ -83,7 +83,7 @@ class KicadPCB(SexpParser):
         return getSexpError(self)
 
     @staticmethod
-    def load(filename):
+    def load(filename, quote_no_parse=None):
         with open(filename,'r') as f:
-            return KicadPCB(parseSexp(f.read()))
+            return KicadPCB(parseSexp(f.read(), quote_no_parse))
 
