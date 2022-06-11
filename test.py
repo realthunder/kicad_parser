@@ -7,7 +7,7 @@ import sys
 import argparse
 
 parser = argparse.ArgumentParser()
-parser.add_argument("filename",nargs='?')
+parser.add_argument("filename", nargs='?', default='test.kicad_pcb', help='If not used, the default is test.kicad_pcb')
 parser.add_argument("-l", "--log", dest="logLevel",
     choices=['DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL'],
     help="Set the logging level")
@@ -16,7 +16,7 @@ args = parser.parse_args()
 logging.basicConfig(level=args.logLevel,
         format="%(filename)s:%(lineno)s: %(levelname)s - %(message)s")
 
-pcb = KicadPCB.load('test.kicad_pcb' if args.filename is None else args.filename)
+pcb = KicadPCB.load(args.filename)
 
 # check for error
 for e in pcb.getError():
