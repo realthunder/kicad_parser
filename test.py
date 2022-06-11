@@ -16,7 +16,7 @@ args = parser.parse_args()
 logging.basicConfig(level=args.logLevel,
         format="%(filename)s:%(lineno)s: %(levelname)s - %(message)s")
 
-pcb = KicadPCB.load('test.kicad_pcb' if args.filename is None else args.filename[0])
+pcb = KicadPCB.load('test.kicad_pcb' if args.filename is None else args.filename)
 
 # check for error
 for e in pcb.getError():
