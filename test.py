@@ -1,7 +1,11 @@
 #!/usr/bin/env python
 
 from kicad_pcb import *
-from sexp_parser import *
+
+try:
+    from .sexp_parser import *
+except ImportError:
+    from sexp_parser.sexp_parser import *
 
 import sys
 import argparse
