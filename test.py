@@ -2,20 +2,21 @@
 
 from kicad_pcb import *
 from sexp_parser import *
+
 import sys
 import argparse
 
 parser = argparse.ArgumentParser()
-parser.add_argument("filename",nargs='?')
-parser.add_argument("-l", "--log", dest="logLevel", 
-    choices=['DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL'], 
+parser.add_argument("filename", nargs='?', default='test.kicad_pcb', help='If not used, the default is test.kicad_pcb')
+parser.add_argument("-l", "--log", dest="logLevel",
+    choices=['DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL'],
     help="Set the logging level")
 parser.add_argument("-o", "--output", help="output filename")
-args = parser.parse_args()    
+args = parser.parse_args()
 logging.basicConfig(level=args.logLevel,
         format="%(filename)s:%(lineno)s: %(levelname)s - %(message)s")
 
-pcb = KicadPCB.load('test.kicad_pcb' if args.filename is None else args.filename[0])
+pcb = KicadPCB.load(args.filename)
 
 # check for error
 for e in pcb.getError():
@@ -60,7 +61,7 @@ print('\nmodule[0] keys: {}'.format(pcb.module[0]))
 # first element of each S-Expression to be the line number
 #
 # The assignment '=' here will not overwrite existing models, but will be
-# appended to a SexpList. 
+# appended to a SexpList.
 pcb.module[0].model = SexpParser([0,'model','new/model2',
                             [0, 'at', [0, 'xyz', 0, 1, 2]],
                             [0, 'scale', [0, 'xyz', 0,2,3]],
@@ -69,9 +70,9 @@ pcb.module[0].model = SexpParser([0,'model','new/model2',
 # Or, use parseSexp() to convert S-Expression in plain text to list-based
 # representation
 pcb.module[0].model = SexpParser(parseSexp(
-    '''(model new/model3 
-        (at (xyz 1 2 3)) 
-        (scale (xyz 3 5 6)) 
+    '''(model new/model3
+        (at (xyz 1 2 3))
+        (scale (xyz 3 5 6))
         (rotate (xyz 7.0 8.0 9.0)))
     '''))
 
