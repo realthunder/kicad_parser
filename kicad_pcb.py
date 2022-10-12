@@ -69,6 +69,7 @@ class KicadPCB(SexpParser):
                 'segment',
                 'arc',
                 'via',
+                'module',
                 ['module'] + _module,
                 ['footprint'] + _module,
                 ('zone',
