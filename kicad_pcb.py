@@ -16,7 +16,7 @@ except ImportError:
 __author__ = "Zheng, Lei"
 __copyright__ = "Copyright 2016, Zheng, Lei"
 __license__ = "MIT"
-__version__ = "1.0.0"
+__version__ = "1.1.5" #maui
 __email__ = "realthunder.dev@gmail.com"
 __status__ = "Prototype"
 
@@ -51,9 +51,14 @@ class KicadPCB_module(SexpParser):
 class KicadPCB(SexpParser):
 
     # To make sure the following key exists, and is of type SexpList
-    _module = ['fp_text',
+    _module = ['property', # maui
+               'fp_text',
                'fp_circle',
                'fp_arc',
+               'fp_line', # maui
+               'fp_rect', # maui
+               'fp_poly', # maui
+               'zone', # maui
                'pad',
                'model']
 
@@ -65,8 +70,9 @@ class KicadPCB(SexpParser):
                 'gr_line',
                 'gr_circle',
                 'gr_arc',
+                'gr_poly', # maui
                 'gr_curve',
-                'gr_poly',
+                'gr_rect', # maui
                 'segment',
                 'arc',
                 'via',
@@ -91,4 +97,3 @@ class KicadPCB(SexpParser):
     def load(filename, quote_no_parse=None, encoding='utf-8'):
         with open(filename,'r', encoding=encoding) as f:
             return KicadPCB(parseSexp(f.read(), quote_no_parse))
-
